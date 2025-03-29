@@ -159,6 +159,7 @@ private fun ColumnScope.ManualContent(
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically,
     ) {
+        // TODO: replace chips with slider for coffee/water (do we ever need two sliders?)
         predefinedMultipliers.forEach {
             com.omelan.cofi.components.Chip(
                 value = "${it.toStringShort()}x",
