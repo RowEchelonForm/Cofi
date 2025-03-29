@@ -38,7 +38,11 @@ fun OutlinedNumbersField(
         value = value,
         onValueChange = { newValue ->
             if (newValue.matches(pattern)) {
-                if (value == "0.0" && newValue != "0.0" && newValue.endsWith("0.0")) {
+                val onlyDecimalSeparatorRemoved = value.replace(".", "") == newValue
+                if (onlyDecimalSeparatorRemoved) {
+                    onValueChange(value)
+                }
+                else if (value == "0.0" && newValue != "0.0" && newValue.endsWith("0.0")) {
                     onValueChange(newValue.removeSuffix("0.0"))
                 } else if (value == "0" && newValue != "0" && newValue.endsWith("0")) {
                     onValueChange(newValue.removeSuffix("0"))
